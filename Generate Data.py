@@ -60,9 +60,9 @@ def double_band_split(pts, theta, delta):
     return A, B, intersection
 
 
-# -----------------------------
+
 # Betti Curve Computation
-# -----------------------------
+
 max_dim = 2
 max_thresh = 2.5
 eps_vals = np.arange(0, max_thresh, .025)
@@ -89,10 +89,8 @@ def betti_curve(points):
 
     return curves
 
-
-# -----------------------------
 # Save Betti Curves
-# -----------------------------
+
 def save_betti_csv(curves, filepath):
 
     # ensure .csv extension
@@ -108,18 +106,16 @@ def save_betti_csv(curves, filepath):
     np.savetxt(filepath, data, delimiter=",", header=header, comments='')
 
 
-# -----------------------------
+
 # Create data directory
-# -----------------------------
 script_dir = os.path.dirname(os.path.abspath(__file__))
 data_dir = os.path.join(script_dir, 'Data Sets')
 
 os.makedirs(data_dir, exist_ok=True)
 
 
-# -----------------------------
+
 # Begin data generation
-# -----------------------------
 for trial in range(n_trials):
 
     trial_dir = os.path.join(data_dir, f'Trial {trial+1}')
@@ -142,9 +138,9 @@ for trial in range(n_trials):
     gcurve = betti_curve(pts)
     save_betti_csv(gcurve, os.path.join(global_dir, 'betti_global.csv'))
 
-    # -----------------------------
+ 
     # Delta sweep
-    # -----------------------------
+    
     for delta in delta_values:
 
         width_dir = os.path.join(trial_dir, f"Width_{delta:.2f}")
