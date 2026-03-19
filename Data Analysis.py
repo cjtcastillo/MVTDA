@@ -7,7 +7,8 @@ from ripser import ripser
 from persim import plot_diagrams
 
 # Root Dir
-base_dir = r"C:\Users\Connor\Desktop\MVTDA\Data Sets"
+base_dir = script_dir = os.path.dirname(os.path.abspath(__file__))
+data_dir = os.path.join(base_dir, "Data Sets")
 
 # Load Betti Curves
 def load_betti(filepath):
